@@ -1,8 +1,9 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/name",
-      "destination": "/name.html"
+      "source": "/5-week-directory-submission-process",
+      "destination": "/5-week-directory-submission-process.html"
     }
   ]
 }
