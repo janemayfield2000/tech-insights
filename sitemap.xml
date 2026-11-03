@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -20,5 +21,20 @@
   </url>
   <url>
     <loc>https://tech-insights-five.vercel.app/where-your-budget-actually-pays-off.html</loc>
+  </url>
+  <url>
+    <loc>https://tech-insights-five.vercel.app/how-to-measure-whether-your-saas-directory-listings-are-worth-it.html</loc>
+  </url>
+  <url>
+    <loc>https://tech-insights-five.vercel.app/how-many-free-listing-sites-should-you-start-with-a-step-by-step-rollout-plan.html</loc>
+  </url>
+  <url>
+    <loc>https://tech-insights-five.vercel.app/how-to-prepare-your-website-and-track-your-directory-listings.html</loc>
+  </url>
+  <url>
+    <loc>https://tech-insights-five.vercel.app/directory-listings-as-part-of-a-balanced-link-building-strategy.html</loc>
+  </url>
+  <url>
+    <loc>https://tech-insights-five.vercel.app/what-to-do-yourself-and-when-to-get-support.html</loc>
   </url>
 </urlset>
