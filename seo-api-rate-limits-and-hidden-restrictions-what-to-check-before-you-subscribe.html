@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO API Rate Limits and Hidden Restrictions: What to Check Before You Subscribe</title>
+  <meta name="description" content="Learn what to check before subscribing to an SEO API, including request limits, usage quotas, data storage rules, and access requirements.">
+  <meta name="robots" content="index, follow">
+  <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    html, body {
+      background-color: #000000;
+      color: #e0e0e0;
+      margin: 0;
+      min-height: 100%;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    article {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1, h2 {
+      color: #ffffff;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+    li {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    a {
+      color: #4da6ff;
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>SEO API Rate Limits and Hidden Restrictions: What to Check Before You Subscribe</h1>
+
+    <img src="https://jpcdn.it/img/small/af8baffb79b898c182b5ae781cbcadb9.png" alt="SEO API Rate Limits and Hidden Restrictions: What to Check Before You Subscribe">
+
+    <p>Pricing pages tell you what an SEO data API costs. They rarely tell you how fast you can use it, how long you can keep the data, or what happens when you hit a cap. Those details often matter more than the monthly fee, especially for agencies running jobs across dozens of projects.</p>
+
+    <p>This guide collects the restrictions that tend to surprise teams after they have already subscribed.</p>
+
+    <h2>Request Rate Limits</h2>
+
+    <p>Every provider caps how quickly you can send requests, and the numbers differ widely. DataForSEO allows up to 2,000 requests per minute on most APIs, with a cap of 30 simultaneous requests on heavier endpoints like Backlinks and DataForSEO Labs. SE Ranking allows 10 requests per second on its Data API and 5 per second on its Project API. Semrush caps the Standard API at 10 requests per second and 10 concurrent requests, which can slow down bulk data retrieval.</p>
+
+    <p>A rate limit does not make an API bad, but it does shape how you design your scripts. Plan for batching, caching, and retries with backoff, and test your slowest job before you commit.</p>
+
+    <h2>Quotas, Units, and What Happens When They Run Out</h2>
+
+    <p>Most providers meter usage in units, credits, or rows, and each handles an empty balance differently. SE Ranking returns an HTTP 400 “Insufficient funds” error and pauses access until the next cycle. Semrush returns ERROR 132 for API v3 or a 403 error for API v4. Moz lets you check your remaining quota in real time with the quota.lookup method, which makes monitoring easier.</p>
+
+    <p>Expiry rules matter just as much. Semrush units expire at the end of each month, and Ahrefs add-on units expire after three billing months. DataForSEO’s $50 minimum top-up, by contrast, never expires. A balance that disappears can quietly raise your real cost.</p>
+
+    <h2>Data Storage and Caching Rules</h2>
+
+    <p>Some restrictions concern what you do with the data after you receive it. Semrush limits data caching to one month unless you obtain written consent, which is a problem for any product that stores history. DataForSEO keeps results as JSON for 30 days and raw HTML for 7 days. Mangools uses a 24-hour cache, so identical requests within a day are not charged twice.</p>
+
+    <p>Before you build a reporting product on top of an API, check these points:</p>
+
+    <ul>
+      <li>How long you may store the data you collect</li>
+      <li>Whether you may display it to clients or resell it</li>
+      <li>How long the provider keeps results available for re-download</li>
+      <li>Whether caching is encouraged, tolerated, or restricted</li>
+    </ul>
+
+    <h2>Access Requirements and Hidden Prerequisites</h2>
+
+    <p>Some APIs are not available simply because you want them. Ahrefs requires an Enterprise plan. Semrush requires a Business subscription before you can buy API units. SpyFu includes API access only on its Professional plan, and the lower-tier Basic plan does not include it. Mangools does not publish API pricing at all, so you must fill out a contact form first.</p>
+
+    <p>The Backlinks API at DataForSEO also requires a $100 monthly top-up. These prerequisites can double the true entry cost, so always ask what must be purchased before the first request is possible.</p>
+
+    <h2>How to Run a Fair Test</h2>
+
+    <p>The best way to find hidden limits is to run a pilot. Pick two providers and send them the same batch of queries. Note how long each job takes, how many credits or units it uses, and whether any errors appear. Then repeat the test at a higher volume to see where throttling begins. A short pilot costs little and often reveals more than hours of reading documentation.</p>
+
+    <p>For more detail on the providers mentioned here, this guide to <a href="https://seobotai.com/blog/ahrefs-api-alternatives/">Ahrefs API alternatives</a> compares seven options on price and limits, and this overview of the <a href="https://seobotai.com/blog/dataforseo-alternatives-the-best-options-for-seo-data-api-in-2026/">best DataForSEO alternatives for SEO data APIs in 2026</a> looks at how six other providers handle pricing and onboarding.</p>
+
+    <h2>The Bottom Line</h2>
+
+    <p>A cheap API with restrictive limits can cost more than an expensive one that fits your workflow. Check rate limits, expiry rules, storage terms, and access prerequisites before you subscribe, and test with real jobs. The few minutes you spend reading the fine print can save weeks of rework later.</p>
+  </article>
+</body>
+</html>
