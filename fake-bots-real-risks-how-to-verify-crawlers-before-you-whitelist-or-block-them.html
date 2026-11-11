@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Bots, Real Risks: How to Verify Crawlers Before You Whitelist or Block Them</title>
+  <meta name="description" content="Learn how to identify genuine crawlers, verify AhrefsBot, detect fake bots and build safer firewall and robots.txt rules.">
+  <meta name="robots" content="index, follow">
+  <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+  <style>
+    html, body {
+      background-color: #000000;
+      color: #e0e0e0;
+      margin: 0;
+      min-height: 100%;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    article {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1, h2 {
+      color: #ffffff;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 32px;
+      margin-bottom: 14px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 18px;
+    }
+    li {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    a {
+      color: #4da6ff;
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <h1>Fake Bots, Real Risks: How to Verify Crawlers Before You Whitelist or Block Them</h1>
+    <img src="https://jpcdn.it/img/small/86ae80a611ce154cadc57ef34d24b674.png" alt="Fake Bots, Real Risks: How to Verify Crawlers Before You Whitelist or Block Them">
+
+    <p>Not every visitor in your server logs is who it claims to be. Some bots politely identify themselves and follow your rules. Others borrow famous names, hoping to slip past your defenses or scrape your content unnoticed.</p>
+
+    <p>Knowing the difference is a basic skill for anyone who manages a website. It protects your server, your content and your search visibility at the same time. AhrefsBot makes a perfect case study, because it is both widely recognized and widely imitated.</p>
+
+    <h2>Why Crawler Traffic Deserves Your Attention</h2>
+
+    <p>Most site owners only look at their logs when something goes wrong: a traffic spike, a slow page, a hosting warning. By then, the damage is already done and the instinct is to react fast. Blocking an entire user-agent or a wide range of addresses feels decisive, but it often causes more problems than it solves.</p>
+
+    <p>A healthier habit is to understand what normal crawler traffic looks like on your site before trouble starts. Once you know which bots visit regularly, how often they come and what they request, anything unusual stands out immediately. That baseline is the foundation of every decision in this article.</p>
+
+    <h2>Why User-Agents Cannot Be Trusted Alone</h2>
+
+    <p>A user-agent is just a text label sent with each request. Anyone can set it to anything. A scraper can call itself AhrefsBot, Googlebot or any other trusted name in a single line of code, and your server has no built-in way to know the difference.</p>
+
+    <p>That is why decisions based only on the user-agent are risky. If you whitelist everything that says “AhrefsBot,” you may be giving free access to an impostor. If you block everything that says “AhrefsBot,” you may be cutting off a legitimate crawler along with the fakes. Neither choice is safe without verification.</p>
+
+    <h2>What the Real AhrefsBot Looks Like</h2>
+
+    <p>AhrefsBot is the main crawler behind Ahrefs. It scans the public web and stores URLs, internal links, titles, headings and anchor texts. That index powers tools such as Site Explorer and Keywords Explorer, and it also feeds the Yep.com search engine. A second crawler, AhrefsSiteAudit, runs when someone audits a site inside the platform and uses its own user-agent. The <a href="https://seobotai.com/blog/ahrefs-bot/">complete AhrefsBot guide</a> covers both in detail.</p>
+
+    <p>The genuine crawler has a recognizable profile:</p>
+
+    <ul>
+      <li>A user-agent that includes AhrefsBot and a link to the official robot page.</li>
+      <li>Requests that come from IP ranges Ahrefs publishes.</li>
+      <li>IP addresses that reverse-resolve to hostnames ending in ahrefs.com or ahrefs.net.</li>
+      <li>Compliance with robots.txt rules and the Crawl-delay directive.</li>
+      <li>Only GET requests, with no random URL guessing.</li>
+    </ul>
+
+    <p>A bot that fails these checks is not the real thing, regardless of its name. Real AhrefsBot also backs off on its own when your server starts returning many 4xx or 5xx errors, which is another sign of a well-behaved crawler.</p>
+
+    <h2>Why Impostors Use Famous Names</h2>
+
+    <p>You might wonder why anyone bothers to fake a crawler identity. The reason is simple: trusted names open doors. Many sites allow well-known bots through firewalls, rate limits and login walls because blocking them would hurt search visibility. A scraper that pretends to be a respected crawler can inherit that trust and collect content, probe for weaknesses or generate load without being challenged.</p>
+
+    <p>SEO crawlers are especially attractive to imitate. They are common, they visit often and most administrators have learned to ignore them. That familiarity is exactly what makes a fake easy to overlook in a busy log file.</p>
+
+    <h2>Building Safer Firewall Rules</h2>
+
+    <p>Once you can tell real from fake, your rules become much more precise. Whitelist or rate-limit only verified addresses, and challenge or block unverified traffic that claims to be a known crawler. Keep your IP lists updated, since Ahrefs occasionally adds or adjusts ranges, and an outdated list will eventually block the real bot while letting new fakes through.</p>
+
+    <p>It also helps to layer your controls instead of relying on one. Robots.txt handles polite bots that read and obey it. A firewall or CDN handles everything else. Server-level rules in Apache or Nginx can enforce blocks by IP range, but they are harder to maintain than a few lines in robots.txt, so keep them as a last resort for situations that demand strict enforcement.</p>
+
+    <h2>Robots.txt: The First Line of Control</h2>
+
+    <p>For legitimate crawlers, robots.txt is the simplest and most reliable tool. A full block uses a single rule that tells AhrefsBot to stay away from every URL. If you want to keep AhrefsSiteAudit out as well, you add a matching rule for that user-agent. For most sites, though, a lighter touch works better: disallow only private folders such as admin, staging or internal reports, and add a Crawl-delay value if the crawl rate is a concern.</p>
+
+    <p>Remember that robots.txt only works on bots that choose to obey it. A fake AhrefsBot will ignore it completely, which is exactly why verification and firewall rules exist alongside it. Think of robots.txt as a polite sign on the door and your firewall as the lock.</p>
+
+    <h2>What You Lose by Blocking the Real Crawler</h2>
+
+    <p>A block is not free. When AhrefsBot cannot reach your site, Ahrefs stops receiving fresh data about it. Backlink counts and referring domains may freeze, some pages may disappear from reports, and agencies or partners who analyze your domain will see incomplete information. If you use Ahrefs yourself, you are effectively blinding your own tool.</p>
+
+    <p>For that reason, blocking should be a deliberate choice, not a reflex. Very small sites with limited resources, sensitive internal projects and organizations with strict policies against non-essential crawlers have good reasons to say no. Everyone else is usually better served by throttling the bot with Crawl-delay and restricting only the areas that should stay private.</p>
+
+    <h2>Connecting Security to Your SEO Stack</h2>
+
+    <p>The tools you choose determine which crawlers you need to manage. A lean keyword tool adds very little crawler traffic to think about, while a full platform brings its own bot and its own set of rules. The <a href="https://seobotai.com/blog/ahrefs-vs-kwfinder-comparison/">Ahrefs vs KWFinder comparison</a> explains the difference clearly: Ahrefs offers deep backlink, audit and competitor data at a premium price, while KWFinder focuses on simple, affordable keyword research.</p>
+
+    <p>If you decide that a lighter tool covers your needs, your crawler management becomes simpler too. If you choose the full platform, it makes sense to invest a little time in verification and firewall rules so that its crawler can work without friction while impostors stay out.</p>
+
+    <h2>Making Verification a Habit</h2>
+
+    <p>You do not need to check every request. A sensible rhythm is to review your logs periodically, verify any bot that shows unusual volume, and recheck your whitelists whenever you change hosting, CDN or security plugins. Those changes are the most common reason a good bot suddenly gets blocked or a fake suddenly gets through.</p>
+
+    <p>Keep brief notes on what you decided and why. When a colleague, client or hosting provider asks why a certain crawler is allowed or blocked, a clear record saves time and prevents the same debate from happening again.</p>
+
+    <h2>The Bottom Line</h2>
+
+    <p>Trust, but verify. A name in a log file is a claim, not proof. Check IPs, confirm reverse DNS, and write firewall rules around evidence instead of labels. That way you keep helpful crawlers working, shut out impostors, and protect both your security and your search visibility.</p>
+  </article>
+</body>
+</html>
